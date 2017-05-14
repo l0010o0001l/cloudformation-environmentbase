@@ -646,6 +646,7 @@ class Template(t.Template):
 
                 ebs_block_device = ec2.EBSBlockDevice(
                     DeleteOnTermination=ebs_volume.get('delete_on_termination', True),
+                    Encrypted=ebs_volume.get('encrypted', False),
                     VolumeSize=ebs_volume.get('size', '100'),
                     VolumeType=ebs_volume.get('type', 'gp2'))
 
@@ -1337,4 +1338,3 @@ class Template(t.Template):
                 if a_subnet_layer == subnet_layer:
                     return subnet_type
         return None
-
